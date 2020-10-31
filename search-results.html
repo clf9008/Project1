@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Results | Library of Congress Search</title>
+  <title>Weather Conditions</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
     rel="stylesheet" />
@@ -13,7 +12,6 @@
    
     <link rel="stylesheet" href="/Project1/style.css" />
 </head>
-=======
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,9 +40,10 @@
     <link rel="stylesheet" href="./assets/css/jass.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
->>>>>>> 5c83a82c1707af9e8a87883f4f456d925edf91f0
 
   <body>
+    
+    
     <div
       class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary"
     >
@@ -57,9 +56,7 @@
             type="text"
             placeholder="Search!"
           />
-
-
-          <button class="btn btn-info btn-block">Search</button>
+          <button class="btn btn-info btn-block" id="search-button">Search</button>
         </form>
 
         <a href="./index.html" class="btn btn-block btn-danger"
@@ -69,13 +66,16 @@
             <div id="result-content"></div>
           </div>
       </div>
+    
       <div class="card" style="width:400px">
-        <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
         <div class="col-12 col-md-9 p-3 text-light"></div>
         <div class="card-body">
-          <h4 class="card-title">John Doe</h4>
-          <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-          <a href="#" class="btn btn-primary stretched-link">See Profile</a>
+          <h4 class="card-title" id="city-name">City Name</h4>
+          <p class="card-text" id="city-temp">Temperature</p>
+          <p class="card-text" id="city-humidity">Humidity</p>
+          <p class="card-text" id="city-wind">Wind Speed</p>
+          <p class="card-text" id="city-uv">UV Index</p>
+          <a href="#" class="btn btn-primary stretched-link">See City Webcame</a>
         </div>
       </div>
       <div class="card" style="width:400px">
@@ -109,14 +109,12 @@
         <div id="result-content"></div>
       </div>
     </div>
-<<<<<<< HEAD
+    
   </div>
 
 
   <script src="/Project1/script.js"></script>
 </body>
-=======
->>>>>>> 5c83a82c1707af9e8a87883f4f456d925edf91f0
 
     <script src="./assets/js/display-search.js"></script>
     <script src="weather.js"></script>
