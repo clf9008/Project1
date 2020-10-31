@@ -1,7 +1,11 @@
 //VARIABLE DECLARATIONS
-var resultTextEl = document.querySelector("#result-text");
-var resultContentEl = document.querySelector("#result-content");
-var searchFormEl = document.querySelector("#search-form");
+var searchBtn = document.getElementById("search-button");
+var searchInput = document.getElementById("search-form");
+var cityName = document.getElementById("city-name");
+var cityTemp = document.getElementById("city-temp");
+var cityHumidity = document.getElementById("city-humidity");
+var cityWind = document.getElementById("city-wind");
+var cityUv = document.getElementById("city-uv");
 
 //FUNCTION DECLARATION
 function getParams() {
@@ -56,26 +60,29 @@ function printResults(resultObj) {
   resultContentEl.append(resultCard);
 }
 
-function searchApi(query) {
+function searchedCity(name) {
   var requestUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
-    query +
+    name +
     "&appid=11cc6738fb7101f2239490031655308f&units=imperial";
 
-  fetch(requestUrl).then(function (response) {
-    if (!response.ok) {
-      throw response.json();
-    }
+  fetch(requestUrl)
+    .then(function () {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
 
-    return response.json();
+      var cityVal = data["name"];
+      var tempVal = data.main.temp;
+      var windVal = data["wind"];
+      var uvVal = data["uv"];
 
-    "#city-name".textContent = reponse.name;
-    "#city-temperature".textContent = response.main.temp;
-    "#city humidity".textContent = response.main.humidity;
-    "#city-UV".textContent = response.main.uv;
-  });
-
-  console.log(printResults);
+      cityName.textContent = cityVal;
+      cityTemp.textContent = tempValue;
+      cityWind.textContent = windValue;
+      CityUv.textContent = uvValue;
+    });
 }
 
 function handleSearchFormSubmit(event) {
@@ -92,8 +99,8 @@ function handleSearchFormSubmit(event) {
   searchApi(searchInputVal, formatInputVal);
 }
 
-searchFormEl.addEventListener("submit", handleSearchFormSubmit);
-
-getParams();
+searchBtn.addEventListener("click", function (event) {
+  console.log(event);
+});
 
 //EVENTS
