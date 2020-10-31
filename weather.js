@@ -59,15 +59,11 @@ function printResults(resultObj) {
   resultContentEl.append(resultCard);
 }
 
-function searchApi(query, format) {
+function searchApi(query) {
   var locQueryUrl =
-    "api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}";
-
-  if (format) {
-    locQueryUrl = "https://www.loc.gov/" + format + "/?fo=json";
-  }
-
-  locQueryUrl = locQueryUrl + "&q=" + query;
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    query +
+    "&appid=11cc6738fb7101f2239490031655308f&units=imperial";
 
   fetch(locQueryUrl)
     .then(function (response) {
