@@ -5,10 +5,8 @@ var searchFormEl = document.querySelector("#search-form");
 
 //FUNCTION DECLARATION
 function getParams() {
-  // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
   var searchParamsArr = document.location.search.split("&");
 
-  // Get the query and format values
   var query = searchParamsArr[0].split("=").pop();
   var format = searchParamsArr[1].split("=").pop();
 
@@ -18,7 +16,6 @@ function getParams() {
 function printResults(resultObj) {
   console.log(resultObj);
 
-  // set up `<div>` to hold result content
   var resultCard = document.createElement("div");
   resultCard.classList.add("card", "bg-light", "text-dark", "mb-3", "p-3");
 
@@ -60,38 +57,25 @@ function printResults(resultObj) {
 }
 
 function searchApi(query) {
-  var locQueryUrl =
+  var requestUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     query +
     "&appid=11cc6738fb7101f2239490031655308f&units=imperial";
 
-  fetch(locQueryUrl)
-    .then(function (response) {
-      if (!response.ok) {
-        throw response.json();
-      }
+  fetch(requestUrl).then(function (response) {
+    if (!response.ok) {
+      throw response.json();
+    }
 
-      return response.json();
-    })
-    .then(function (locRes) {
-      // write query to page so user knows what they are viewing
-      resultTextEl.textContent = locRes.search.query;
+    return response.json();
 
-      console.log(locRes);
+    "#city-name".textContent = reponse.name;
+    "#city-temperature".textContent = response.main.temp;
+    "#city humidity".textContent = response.main.humidity;
+    "#city-UV".textContent = response.main.uv;
+  });
 
-      if (!locRes.results.length) {
-        console.log("No results found!");
-        resultContentEl.innerHTML = "<h3>No results found, search again!</h3>";
-      } else {
-        resultContentEl.textContent = "";
-        for (var i = 0; i < locRes.results.length; i++) {
-          printResults(locRes.results[i]);
-        }
-      }
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
+  console.log(printResults);
 }
 
 function handleSearchFormSubmit(event) {
