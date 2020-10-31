@@ -61,10 +61,10 @@ function printResults(resultObj) {
 }
 
 function searchApi(query, format) {
-  var locQueryUrl = 'https://www.loc.gov/search/?fo=json';
+  var locQueryUrl = 'https://clf9008.github.io/Project1/';
 
   if (format) {
-    locQueryUrl = 'https://www.loc.gov/' + format + '/?fo=json';
+    locQueryUrl = 'https://clf9008.github.io/Project1/' + format + '/?fo=json';
   }
 
   locQueryUrl = locQueryUrl + '&q=' + query;
