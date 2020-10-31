@@ -79,9 +79,9 @@ function searchedCity(name) {
       var uvVal = data["uv"];
 
       cityName.textContent = cityVal;
-      cityTemp.textContent = tempValue;
-      cityWind.textContent = windValue;
-      CityUv.textContent = uvValue;
+      cityTemp.textContent = tempVal;
+      cityWind.textContent = windVal;
+      cityUv.textContent = uvVal;
     });
 }
 
@@ -101,6 +101,7 @@ function handleSearchFormSubmit(event) {
 
 searchBtn.addEventListener("click", function (event) {
   console.log(event);
+  searchedCity(searchInput.value);
 });
 
 //EVENTS
