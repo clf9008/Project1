@@ -27,7 +27,7 @@ latitude = weather.coord.lat;
 longitude = weather.coord.lon;
 
 var queryURL =
-"https://api.windy.com/api/webcams/v2/[path]" +
+"https://api.windy.com/api/webcams/api/webcams/v2/list/nearby={lat},{lng},{radius}" +
 location;
 "&lat=" +
 latitude +
