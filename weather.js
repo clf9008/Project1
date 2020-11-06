@@ -173,7 +173,10 @@ function saveSearchHistory() {
   for (let index = 0; index < searchHistory.length; index++) {
     var historyContent = document.createElement("input");
     historyContent.setAttribute("type", "text");
-    historyContent.setAttribute("class", "font-weight-bold btn btn-warning");
+    historyContent.setAttribute(
+      "class",
+      "font-weight-bold btn btn-warning m-1 col-md-12"
+    );
     historyContent.setAttribute("value", searchHistory[index]);
     historyContent.addEventListener("click", function () {
       getWeather(searchHistory[index]);
