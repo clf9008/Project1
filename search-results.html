@@ -1,32 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weather Conditions</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
-    rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-   
-    <link rel="stylesheet" href="/Project1/style.css" />
-</head>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Results | Library of Congress Search</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="/Project1/style.css" />
-  </head>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Results | Library of Congress Search</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -34,30 +10,20 @@
       crossorigin="anonymous"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
       rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./assets/css/jass.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <title>Weather Application</title>
   </head>
-    <!-- CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <link rel="stylesheet" href="weather.js">
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./index.html">
-  <!-- jQuery and JS bundle w/ Popper.js -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-</head>
-
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
       <a class="navbar-brand" href="#">Weather Application</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -67,96 +33,84 @@
             <a class="nav-link" href="./search-results.html">Weather</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./search-results-cams.html">Cams</a>
+            <a class="nav-link" href="./search-results-cams.html">Weather Cams</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
     </nav>
+    <br></br>
     
-    <div
-      class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary"
-    >
-      <div class="col-12 col-md-3 bg-light p-3">
-        <h1 class="text-primary">Destination Travel Weather</h1>
-        <form id="search-form" class="mb-2">
-          <input
-            id="search-input"
-            class="form-input w-100"
-            type="text"
-            placeholder="Search!"
-          />
-          <button class="btn btn-info btn-block" id="search-button">Search</button>
-        </form>
-
-        <a href="./index.html" class="btn btn-block btn-danger"
-          >&larr; Go back.</a>
-          <div class="col-12 col-md-9 p-3 text-light">
-            <h2>Showing results for <span id="result-text"></span></h2>
-            <div id="result-content"></div>
+    <main>
+      <div class="container">
+          <div class="row">
+            <div class="col-md-4 bg-light">  
+                <h3 class="search-header">Search for a City</h3>
+                  <div class= "input-group">
+                    <label class="sr-only" for="inlineFormInput">Search</label>
+                      <input
+                        type="text"
+                        class="form-control mb-2 city-search container"
+                        id="city-value"
+                        placeholder="Type a city name to explore!"
+                      />
+                      <div class="col-md-auto input-group-append">
+                        <button type="button" class="btn btn-primary" id="search-button"><i class="fas fa-search" id="search-icon"></i></button>
+                      </div>
+                  </div>
+                  <button class="btn btn-primary" type="button" id="clear-history">Clear Search History</button>
+                  <form id="history"></form>
+            </div>
+          <div class="city card col-md-8">
+              <div class="row">
+                <div class="col-12 border border-light m-3 bg-light rounded">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span id="city-name" class="city-name"></span>
+                            <img id="current-pic">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p id="city-temperature"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p id="city-humidity"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p id="city-windspeed"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p id="city-UV"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                  <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                  <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                  <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                  <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                </div>
+            </div>
           </div>
-      </div>
-    
-      <div class="card" style="width:400px">
-        <div class="col-12 col-md-9 p-3 text-light"></div>
-        <div class="card-body">
-          <h4 class="card-title" id="city-name">City Name</h4>
-          <p class="card-text" id="city-temp">Temperature</p>
-          <p class="card-text" id="city-humidity">Humidity</p>
-          <p class="card-text" id="city-wind">Wind Speed</p>
-          <p class="card-text" id="city-uv">UV Index</p>
-          <a href="#" class="btn btn-primary stretched-link">See City Webcame</a>
         </div>
-      </div>
-      <div class="card" style="width:400px">
-        <div class="col-12 col-md-9 p-3 text-light"></div>
-        <div class="card-body">
-          <h4 class="card-title" id="city-name">City Name</h4>
-          <p class="card-text" id="city-temp">Temperature</p>
-          <p class="card-text" id="city-humidity">Humidity</p>
-          <p class="card-text" id="city-wind">Wind Speed</p>
-          <p class="card-text" id="city-uv">UV Index</p>
-          <a href="#" class="btn btn-primary stretched-link">See City Webcame</a>
-        </div>
-      </div>
-      <div class="card" style="width:400px">
-        <div class="col-12 col-md-9 p-3 text-light"></div>
-        <div class="card-body">
-          <h4 class="card-title" id="city-name">City Name</h4>
-          <p class="card-text" id="city-temp">Temperature</p>
-          <p class="card-text" id="city-humidity">Humidity</p>
-          <p class="card-text" id="city-wind">Wind Speed</p>
-          <p class="card-text" id="city-uv">UV Index</p>
-          <a href="#" class="btn btn-primary stretched-link">See City Webcame</a>
-        </div>
-      </div>
-      <div class="card" style="width:400px">
-        <div class="col-12 col-md-9 p-3 text-light"></div>
-        <div class="card-body">
-          <h4 class="card-title" id="city-name">City Name</h4>
-          <p class="card-text" id="city-temp">Temperature</p>
-          <p class="card-text" id="city-humidity">Humidity</p>
-          <p class="card-text" id="city-wind">Wind Speed</p>
-          <p class="card-text" id="city-uv">UV Index</p>
-          <a href="#" class="btn btn-primary stretched-link">See City Webcame</a>
-        </div>
-      </div>
-      
-
-      <div class="col-12 col-md-9 p-3 text-light">
-        <h2>Showing results for <span id="result-text"></span></h2>
-        <div id="result-content"></div>
-      </div>
-    </div>
-    
+        <br>
+        
   </div>
-
-
-  <script src="/Project1/script.js"></script>
-  <script src="./assets/js/display-search.js"></script>
-  <script src="weather.js"></script>
+      </div>
+    </main>
+    <script src="weather.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="Develop/script.js"></script>
   </body>
 </html>
