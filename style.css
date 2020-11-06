@@ -55,6 +55,7 @@
   background-color: beige;
   text-align: center;
   background-image: url("https://cdn.pixabay.com/photo/2018/04/26/21/25/clouds-3353159_1280.jpg");
+  background-size: 800px;
 }
 div {
   opacity: 0.95;
