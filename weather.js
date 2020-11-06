@@ -12,6 +12,7 @@ var cityUV = document.getElementById("city-UV");
 var cityHistory = document.getElementById("history");
 var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 var APIKey = "11cc6738fb7101f2239490031655308f";
+var video = document.getElementById("live-webcam");
 
 //FUNCTION DECLARATION
 //FUNCTION TO REACH OPENWEATHER API
@@ -167,6 +168,45 @@ function getWeather(name) {
     });
 }
 
+function webcam(name) {
+  var requestUrl =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    name +
+    "&appid=" +
+    APIKey;
+
+  fetch(requestUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var lat = data.weather.coord.lat;
+      var long = data.weather.coord.lon;
+
+      var queryURL =
+        "https://api.windy.com/api/webcams/api/webcams/v2/list/nearby={lat},{lng},{radius}" +
+        name +
+        "&lat=" +
+        lat +
+        "&lon=" +
+        long;
+
+      fetch(queryURL)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          console.log(data);
+          var localWebcam = name(cityInput);
+
+          video.textContent = localWebcam.text(localWebcam[0].value);
+
+          $("#live-webcam").text("Live Look: ");
+          $("#live-webcam").append(localWebcam.text(localWebcam[0].value));
+        });
+    });
+}
+
 //FUNCTION TO SAVE THE SEARCH HISTORY OF THE USER'S INPUT
 function saveSearchHistory() {
   cityHistory.textContent = "";
@@ -198,6 +238,7 @@ searchBtn.addEventListener("click", function (event) {
   var searchInput = cityInput.value;
   console.log(cityInput.value);
   getWeather(cityInput.value);
+  webcam(cityInput.value);
   searchHistory.push(searchInput);
   localStorage.setItem("search", JSON.stringify(searchHistory));
   saveSearchHistory();

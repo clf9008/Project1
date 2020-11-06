@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -71,9 +72,20 @@
                   </div>
                   
             </div>
-          <div class="city card col-md-8">
+            <div class="card col-md-8 small">
+              
+              <video class="img-fluid" playsinline autoplay muted loop>
+              <source src="https://mdbootstrap.com/img/video/animation-intro.mp4" type="video/mp4" id="live-webcam">
+              </video>
+              <div class="card-body">
+              <h4 class="card-title">City Name</h4>
+              <p class="card-text">Weather Webcam Feed</p>
+              <a href="#" class="btn btn-primary">Click For More Webcam Footage</a>
+              </div>
+          </div>
+            <div class="city card col-md-12">
               <div class="row">
-                <div class="col-12 border border-light m-3 bg-light rounded">
+                <div class="col-12 border border-light m-3 bg-light rounded text-center">
                     <div class="row">
                         <div class="col-md-12">
                             <span id="city-name" class="city-name"></span>
@@ -118,6 +130,5 @@
     </main>
     <script src="weather.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="Develop/script.js"></script>
   </body>
 </html>
