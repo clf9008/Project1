@@ -22,9 +22,7 @@
 var WindyAPIKey= "OkhKOiAdwFCcdo0j28t9g73szM8dRq0O"
 
 function getWebcam(cityInput) {
-
   searchHistory(cityInput);
-//entering a variable into block scope for longitude and latitude
 latitude = weather.coord.lat;
 longitude = weather.coord.lon;
 
@@ -40,11 +38,11 @@ fetch(queryURL)
     return response.json();
   })
   .then(funciton (data) {
-    var localWebcam = name(cityInput)
+    var localWebcam = name(cityInput);
 
     $("#live-webcam").text("Live Look: ");
     $("#live-webcam").append(localWebcam.text(localWebcam[0].value));
-})}
+}
 
 // //fetch method that will que URL to 'get' webcam for given location
 // $.ajax({
