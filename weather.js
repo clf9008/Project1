@@ -111,6 +111,55 @@ function grabWeather(cityname) {
     cityIdNumber +
     "&appid=" +
     APIKey;
+
+  fetch(fivedayUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      //created a variable to grab the class names of the elements in the html
+      var forecastElements = document.getElementsByClassName("forecast");
+
+      //for loop to create the five day forecast elements to append to the html
+      for (let index = 0; index < forecastElements.length; index++) {
+        forecastElements[index].textContent = "";
+
+        var forecastIndex = index * 8 + 4;
+
+        var foreCastDate = new Date(data.list[forecastIndex].dt * 1000);
+        console.log(foreCastDate);
+        var foreCastDay = foreCastDate.getDate();
+        var foreCastMonth = foreCastDate.getMonth() + 1;
+        var foreCastYear = foreCastDate.getFullYear();
+        var addForecastDate = document.createElement("p");
+        addForecastDate.setAttribute("class", "mt-3 mb-0 forecast-date");
+        addForecastDate.textContent =
+          foreCastMonth + "/" + foreCastDay + "/" + foreCastYear;
+        forecastElements[index].append(foreCastDate);
+
+        //creates an image tag to append the obtained weather condition image
+        var forecastWeatherImage = document.createElement("img");
+        forecastWeatherImage.setAttribute(
+          "src",
+          "https://openweathermap.org/img/wn/" +
+            data.list[forecastIndex].weather[0].icon +
+            "@2x.png"
+        );
+        forecastElements[index].append(forecastWeatherImage);
+
+        //creates a new h4 tag to hold the temperature text content
+        var forecastTemp = document.createElement("h4");
+        forecastTemp.textContent =
+          "Temperature: " + convert(data.list[forecastIndex].main.temp) + " F";
+        forecastElements[index].append(forecastTemp);
+
+        //creates a new p tag to hold the humidity text content
+        var forecastHumidity = document.createElement("p");
+        forecastHumidity.textContent =
+          "Humidity: " + data.list[forecastIndex].main.humidity + "%";
+        forecastElements[index].append(forecastHumidity);
+      }
+    });
 }
 
 //DECLARES A FUNCTION IN GLOBAL MEMORY THAT WILL SAVE THE USER'S SEARCHED CITY HISTORY
