@@ -1,117 +1,50 @@
-//Declaring variables for global memory that append the HTML page to show results from search form
-var resultTextEl = document.querySelector('#result-text');
-var resultContentEl = document.querySelector('#result-content');
-var searchFormEl = document.querySelector('#search-form');
-//Declaring a constant for global memory that sets the APIKeys that we will be accessing 
-const APIKey = "OkhKOiAdwFCcdo0j28t9g73szM8dRq0O"
-//function to get the parameters entered into the search form
-function getSearchParams() {
-  // Get the search params out of the URL (i.e. 'Paris, France')
-  var searchParamsArr = document.location.search
-
-  // Get the query and format values
-  var query = searchParamsArr[0].split('=').pop();
-  var format = searchParamsArr[1].split('=').pop();
-
-  searchApi(query, format);
-}
-//funciton to print results of the search onto the HTML page inside of the card
-function printResults(resultObj) {
-  console.log(resultObj);
-
-  // set up `<div>` to hold result content
-  var resultCard = document.createElement('div');
-  resultCard.classList.add('card', 'bg-light', 'text-dark', 'mb-3', 'p-3');
-
-  var resultBody = document.createElement('div');
-  resultBody.classList.add('card-body');
-  resultCard.append(resultBody);
-
-  var titleEl = document.createElement('h3');
-  titleEl.textContent = resultObj.title;
-
-  var bodyContentEl = document.createElement('p');
-  bodyContentEl.innerHTML =
-    '<strong>Date:</strong> ' + resultObj.date + '<br/>';
-
-  if (resultObj.subject) {
-    bodyContentEl.innerHTML +=
-      '<strong>Subjects:</strong> ' + resultObj.subject.join(', ') + '<br/>';
-  } else {
-    bodyContentEl.innerHTML +=
-      '<strong>Subjects:</strong> No subject for this entry.';
+function createLocationSearched(LocationSearched) {
+  $("#location-list").empty(); //list will load empty upon document loading 
+//declaring a variable for local memory that will take locations searched for and make them an object that will be stored as a list
+  var keys = Object.keys(LocationSearched);
+  for (var i = 0; i < keys.length; i++) {
+    var locationEntry = $("<button>"); //declaring a variable for local memory for city list entry that functions as a button when clicked 
+    locationEntry.addClass("list-group-item list-group-item-action");
+  //declaring a variable for local memory that will lowercase the object entered into local memory 
+    var splitStr = keys[i].toLowerCase().split(" ");
+    //for loop to uppercase any location in the object array that may need it 
+    for (var j = 0; j < splitStr.length; j++) {
+      splitStr[j] =
+        splitStr[j].charAt(0).toUpperCase() + splitStr[j].substring(1);
+    }
+  //declaring a variable for local memory that displays the city's with proper capitalization 
+    var titleCasedLocation = splitStr.join(" ");
+   locationEntry.text(titleCasedLocation);
+  //apending the inner html document to list and city that is in the city-list stored in local storeage
+    $("#location-list").append(locationEntry);
   }
-
-  if (resultObj.description) {
-    bodyContentEl.innerHTML +=
-      '<strong>Description:</strong> ' + resultObj.description[0];
-  } else {
-    bodyContentEl.innerHTML +=
-      '<strong>Description:</strong>  No description for this entry.';
-  }
-
-  var linkButtonEl = document.createElement('a');
-  linkButtonEl.textContent = 'Read More';
-  linkButtonEl.setAttribute('href', resultObj.url);
-  linkButtonEl.classList.add('btn', 'btn-dark');
-
-  resultBody.append(titleEl, bodyContentEl, linkButtonEl);
-
-  resultContentEl.append(resultCard);
 }
 
-function searchApi(query, format) {
-  var locQueryUrl = 'https://clf9008.github.io/Project1/';
+function getLocationWebcam(location, LocationSearched) {
+createLocationSearched(LocationSearched);
+//entering a variable into block scope for longitude and latitude
+latitude = weather.coord.lat;
+longitude = weather.coord.lon;
 
-  if (format) {
-    locQueryUrl = 'https://clf9008.github.io/Project1/' + format + '/?fo=json';
-  }
-
-  locQueryUrl = locQueryUrl + '&q=' + query;
-
-  fetch(locQueryUrl)
-    .then(function (response) {
-      if (!response.ok) {
-        throw response.json();
-      }
-
-      return response.json();
-    })
-    .then(function (locRes) {
-      // write query to page so user knows what they are viewing
-      resultTextEl.textContent = locRes.search.query;
-
-      console.log(locRes);
-
-      if (!locRes.results.length) {
-        console.log('No results found!');
-        resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
-      } else {
-        resultContentEl.textContent = '';
-        for (var i = 0; i < locRes.results.length; i++) {
-          printResults(locRes.results[i]);
-        }
-      }
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-}
-
-function handleSearchFormSubmit(event) {
-  event.preventDefault();
-
-  var searchInputVal = document.querySelector('#search-input').value;
-  var formatInputVal = document.querySelector('#format-input').value;
-
-  if (!searchInputVal) {
-    console.error('You need a search input value!');
-    return;
-  }
-
-  searchApi(searchInputVal, formatInputVal);
-}
-
-searchFormEl.addEventListener('submit', handleSearchFormSubmit);
-
-getParams();
+var queryURL =
+"https://api.windy.com/api/webcams/api/webcams/v2/list/nearby={lat},{lng},{radius}" +
+location;
+"&lat=" +
+latitude +
+"&lon=" +
+longitude;
+//fetch method that will que URL to 'get' webcam for given location
+$.ajax({
+url: queryURL,
+method: "GET",
+request: {
+  "x-windy-key": "OkhKOiAdwFCcdo0j28t9g73szM8dRq0O"
+//Once we 'get' the data, store the retrieved data inside of an object called "localWebcam"
+}.then(function(localWebcam) {
+console.log(localwebcam);
+//entering a variable into local memory that will display the closest webcam of a searched location
+var localWebcam = $("<button>");
+//append the html document with the data stored in the object localWebcam
+$("#live-webcam").text("Live Look: ");
+$("#live-webcam").append(localWebcam.text(localWebcam[0].value));
+})})}
