@@ -43,7 +43,6 @@
   </head>
   <body>
     <div id="imageDiv"></div>
-
     <!-- Image and text -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light text align-content-center w-100 align-items-center">
       <a class="navbar-brand" href="#">Weather Application</a>
@@ -76,14 +75,14 @@
         <div class="flex-row align-center justify-center min-100-vh bg-primary">
           <div class="col-12 flex-column align-center bg-light p-5">
             <h1 class="text-primary">Destination Travel Weather</h1>
-            <form id="search-form" class="form w-100">
+            <form id="search-form" class="form w-100" method="get" action="search-results.html">
               <input
                 id="search-input"
                 class="form-input w-100"
                 type="text"
                 placeholder="Search!"
               />
-              <button class="btn btn-info btn-block">Search</button>
+              <button class="btn btn-info btn-block" href="./search-results.html">Search</button>
             </form>
 
           </div>
