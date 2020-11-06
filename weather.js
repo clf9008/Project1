@@ -1,15 +1,15 @@
 //VARIABLE DECLARATIONS
 //LINKS THE HTML ELEMENTS TO VARIABLES TO BE TARGETED IN JAVASCRIPT
-var searchButton = document.getElementById("search-btn");
+var searchButton = document.getElementById("search-button");
 var cityValue = document.getElementById("search-city");
 var cityClear = document.getElementById("clear-history");
-var cityName = document.getElementById("name-city");
-var cityImage = document.getElementById("picture-city");
-var cityTemperature = document.getElementById("temp-city");
-var cityHumidity = document.getElementById("humidity-city");
-var cityWindSpeed = document.getElementById("windspeed-city");
-var cityUvIndex = document.getElementById("uv-city");
-var cityHistory = document.getElementById("history-ty");
+var cityName = document.getElementById("city-name");
+var cityImage = document.getElementById("current-pic");
+var cityTemperature = document.getElementById("city-temperature");
+var cityHumidity = document.getElementById("city-humidity");
+var cityWindSpeed = document.getElementById("city-windspeed");
+var cityUvIndex = document.getElementById("city-uv");
+var cityHistory = document.getElementById("history");
 var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 var APIKey = "11cc6738fb7101f2239490031655308f";
 

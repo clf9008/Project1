@@ -57,7 +57,6 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -77,80 +76,77 @@
       </div>
     </nav>
     
-    <div
-      class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary"
-    >
-      <div class="col-12 col-md-3 bg-light p-3">
-        <h1 class="text-primary">Destination Travel Weather</h1>
-        <form id="search-form" class="mb-2">
-          <input
-            id="search-input"
-            class="form-input w-100"
-            type="text"
-            placeholder="Search!"
-          />
-          <button class="btn btn-info btn-block" id="search-button">Search</button>
-        </form>
-
-        <a href="./index.html" class="btn btn-block btn-danger"
-          >&larr; Go back.</a>
-          <div class="col-12 col-md-9 p-3 text-light">
-            <h2>Showing results for <span id="result-text"></span></h2>
-            <div id="result-content"></div>
+    <main>
+      <div class="container">
+          <div class="row">
+            <div class="col-md-4 bg-light">  
+                <h3 class="search-header">Search for a City</h3>
+                  <div class= "input-group">
+                    <label class="sr-only" for="inlineFormInput">Search</label>
+                      <input
+                        type="text"
+                        class="form-control mb-2 city-search container"
+                        id="city-value"
+                        placeholder="Type a city name to explore!"
+                      />
+                      <div class="col-md-auto input-group-append">
+                        <button type="button" class="btn btn-primary" id="search-button"><i class="fas fa-search" id="search-icon"></i></button>
+                      </div>
+                  </div>
+                  <button class="btn btn-primary" type="button" id="clear-history">Clear Search History</button>
+                  <form id="history"></form>
+            </div>
+          <div class="city card col-md-8">
+              <div class="row">
+                <div class="col-12 border border-info m-3 bg-info rounded">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span id="city-name" class="city-name"></span>
+                            <img id="current-pic">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p id="city-temperature"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p id="city-humidity"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p id="city-windspeed"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p id="city-UV"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col forecast bg-info text-white ml-3 mb-3 rounded"></div>
+                  <div class="col forecast bg-info text-white ml-3 mb-3 rounded"></div>
+                  <div class="col forecast bg-info text-white ml-3 mb-3 rounded"></div>
+                  <div class="col forecast bg-info text-white ml-3 mb-3 rounded"></div>
+                  <div class="col forecast bg-info text-white ml-3 mb-3 rounded"></div>
+                </div>
+            </div>
           </div>
-      </div>
-    
-      <div class="card" style="width:400px">
-        <div class="col-12 col-md-9 p-3 text-light"></div>
-        <div class="card-body">
-          <h4 class="card-title" id="city-name">City Name</h4>
-          <p class="card-text" id="city-temp">Temperature</p>
-          <p class="card-text" id="city-humidity">Humidity</p>
-          <p class="card-text" id="city-wind">Wind Speed</p>
-          <p class="card-text" id="city-uv">UV Index</p>
-          <a href="#" class="btn btn-primary stretched-link">See City Webcame</a>
         </div>
-      </div>
-      <div class="card" style="width:400px">
-        <div class="col-12 col-md-9 p-3 text-light"></div>
-        <div class="card-body">
-          <h4 class="card-title" id="city-name">City Name</h4>
-          <p class="card-text" id="city-temp">Temperature</p>
-          <p class="card-text" id="city-humidity">Humidity</p>
-          <p class="card-text" id="city-wind">Wind Speed</p>
-          <p class="card-text" id="city-uv">UV Index</p>
-          <a href="#" class="btn btn-primary stretched-link">See City Webcame</a>
+        <br>
+        <div class="row">
+          <div class="col-md-10"></div>
+          <div class="col-md-2">
+            <button type="button" class="btn btn-success" href="https://openweathermap.org/">Powered By OpenWeather</button>
+            
+          </div>
         </div>
+  </div>
       </div>
-      <div class="card" style="width:400px">
-        <div class="col-12 col-md-9 p-3 text-light"></div>
-        <div class="card-body">
-          <h4 class="card-title" id="city-name">City Name</h4>
-          <p class="card-text" id="city-temp">Temperature</p>
-          <p class="card-text" id="city-humidity">Humidity</p>
-          <p class="card-text" id="city-wind">Wind Speed</p>
-          <p class="card-text" id="city-uv">UV Index</p>
-          <a href="#" class="btn btn-primary stretched-link">See City Webcame</a>
-        </div>
-      </div>
-      <div class="card" style="width:400px">
-        <div class="col-12 col-md-9 p-3 text-light"></div>
-        <div class="card-body">
-          <h4 class="card-title" id="city-name">City Name</h4>
-          <p class="card-text" id="city-temp">Temperature</p>
-          <p class="card-text" id="city-humidity">Humidity</p>
-          <p class="card-text" id="city-wind">Wind Speed</p>
-          <p class="card-text" id="city-uv">UV Index</p>
-          <a href="#" class="btn btn-primary stretched-link">See City Webcame</a>
-        </div>
-      </div>
-      
-
-      <div class="col-12 col-md-9 p-3 text-light">
-        <h2>Showing results for <span id="result-text"></span></h2>
-        <div id="result-content"></div>
-      </div>
-    </div>
+    </main>
     
   </div>
 
