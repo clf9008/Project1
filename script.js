@@ -19,9 +19,11 @@
 //     $("#location-list").append(locationEntry);
 //   }
 // }
+var WindyAPIKey= "OkhKOiAdwFCcdo0j28t9g73szM8dRq0O"
 
 function getWebcam(cityInput) {
-searchHistory(cityInput);
+
+  searchHistory(cityInput);
 //entering a variable into block scope for longitude and latitude
 latitude = weather.coord.lat;
 longitude = weather.coord.lon;
@@ -33,18 +35,29 @@ name +
 latitude +
 "&lon=" +
 longitude;
-//fetch method that will que URL to 'get' webcam for given location
-$.ajax({
-url: queryURL,
-method: "GET",
-request: {
-  "x-windy-key": "OkhKOiAdwFCcdo0j28t9g73szM8dRq0O"
-//Once we 'get' the data, store the retrieved data inside of an object called "localWebcam"
-}.then(function(localWebcam) {
-console.log(localwebcam);
-//entering a variable into local memory that will display the closest webcam of a searched location
-var localWebcam = $("<button>");
-//append the html document with the data stored in the object localWebcam
-$("#live-webcam").text("Live Look: ");
-$("#live-webcam").append(localWebcam.text(localWebcam[0].value));
-})})}
+fetch(queryURL)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(funciton (data) {
+    var localWebcam = name(cityInput)
+
+    $("#live-webcam").text("Live Look: ");
+    $("#live-webcam").append(localWebcam.text(localWebcam[0].value));
+})}
+
+// //fetch method that will que URL to 'get' webcam for given location
+// $.ajax({
+// url: queryURL,
+// method: "GET",
+// request: {
+//   "x-windy-key": "OkhKOiAdwFCcdo0j28t9g73szM8dRq0O"
+// //Once we 'get' the data, store the retrieved data inside of an object called "localWebcam"
+// }.then(function(localWebcam) {
+// console.log(localwebcam);
+// //entering a variable into local memory that will display the closest webcam of a searched location
+// var localWebcam = $("<button>");
+// //append the html document with the data stored in the object localWebcam
+// $("#live-webcam").text("Live Look: ");
+// $("#live-webcam").append(localWebcam.text(localWebcam[0].value));
+// })})
