@@ -3,9 +3,9 @@
   <head>
     <style>
       body {
-        background-image: url('https://cdn.pixabay.com/photo/2018/04/26/21/25/clouds-3353159_1280.jpg');
+        background-image: url("https://cdn.pixabay.com/photo/2018/04/26/21/25/clouds-3353159_1280.jpg");
       }
-      </style>
+    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- CSS -->
@@ -38,23 +38,33 @@
     <link rel="stylesheet" href="./search-results.html" />
     <link rel="stylesheet" href="./style.css" />
 
-
     <title>Weather Application</title>
   </head>
   <body>
     <div id="imageDiv"></div>
-
     <!-- Image and text -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light text align-content-center w-100 align-items-center">
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light text align-content-center w-100 align-items-center"
+    >
       <a class="navbar-brand" href="#">Weather Application</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
-    
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="./index.html"
+              >Home <span class="sr-only">(current)</span></a
+            >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./search-results.html">Weather</a>
@@ -64,8 +74,15 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
         </form>
       </div>
     </nav>
@@ -76,16 +93,25 @@
         <div class="flex-row align-center justify-center min-100-vh bg-primary">
           <div class="col-12 flex-column align-center bg-light p-5">
             <h1 class="text-primary">Destination Travel Weather</h1>
-            <form id="search-form" class="form w-100">
+            <form
+              id="search-form"
+              class="form w-100"
+              method="get"
+              action="search-results.html"
+            >
               <input
                 id="search-input"
                 class="form-input w-100"
                 type="text"
                 placeholder="Search!"
               />
-              <button class="btn btn-info btn-block">Search</button>
+              <button
+                class="btn btn-info btn-block"
+                href="./search-results.html"
+              >
+                Search
+              </button>
             </form>
-
           </div>
         </div>
       </div>
