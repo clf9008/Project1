@@ -12,6 +12,7 @@ var cityUV = document.getElementById("city-UV");
 var cityHistory = document.getElementById("history");
 var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 var APIKey = "11cc6738fb7101f2239490031655308f";
+var APIKey2 = "OkhKOiAdwFCcdo0j28t9g73szM8dRq0O";
 var video = document.getElementById("live-webcam");
 
 //FUNCTION DECLARATION
@@ -175,21 +176,22 @@ function webcam(name) {
     "&appid=" +
     APIKey;
 
+  var requestKey =
+    "https://api.windy.com/api/webcams/v2/api/webcams/v2/" +
+    +"?key=your_API_key" +
+    APIKey2;
+  //fetch request to get the data from the windy server and return the data in json form
+  fetch(requestKey);
+
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      var lat = data.weather.coord.lat;
-      var long = data.weather.coord.lon;
-
-      var queryURL =
-        "https://api.windy.com/api/webcams/api/webcams/v2/list/nearby={lat},{lng},{radius}" +
-        name +
-        "&lat=" +
-        lat +
-        "&lon=" +
-        long;
+      var lat = data.coord.lat;
+      var long = data.coord.lon;
+      //`https://api.windy.com/api/webcams/api/webcams/v2/list/nearby=${lat},${lng},10`
+      var queryURL = `https://api.windy.com/api/webcams/v2/list/nearby=${lat},${long},10?key=${APIKey2}`;
 
       fetch(queryURL)
         .then(function (response) {
@@ -197,12 +199,29 @@ function webcam(name) {
         })
         .then(function (data) {
           console.log(data);
+          console.log(data.result.webcams[0].id);
+
+          fetch(
+            `https://api.windy.com/api/webcams/v2/list/webcam=${data.result.webcams[0].id}?key=${APIKey2}`
+          )
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (data) {
+              console.log(data);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
           var localWebcam = name(cityInput);
 
           video.textContent = localWebcam.text(localWebcam[0].value);
 
           $("#live-webcam").text("Live Look: ");
           $("#live-webcam").append(localWebcam.text(localWebcam[0].value));
+        })
+        .catch(function (error) {
+          console.log(error);
         });
     });
 }
