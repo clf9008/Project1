@@ -176,6 +176,13 @@ function webcam(name) {
     "&appid=" +
     APIKey;
 
+  var requestKey =
+    "https://api.windy.com/api/webcams/v2/api/webcams/v2/" +
+    +"?key=your_API_key" +
+    APIKey2;
+  //fetch request to get the data from the windy server and return the data in json form
+  fetch(requestKey);
+
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
