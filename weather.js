@@ -191,7 +191,7 @@ function webcam(name) {
       var lat = data.coord.lat;
       var long = data.coord.lon;
       //`https://api.windy.com/api/webcams/api/webcams/v2/list/nearby=${lat},${lng},10`
-      var queryURL = `https://api.windy.com/api/webcams/v2/list/nearby=${lat},${long},10?key=${APIKey2}`;
+      var queryURL = `https://api.windy.com/api/webcams/v2/list/nearby=${lat},${long},100?key=${APIKey2}/property=live`;
 
       fetch(queryURL)
         .then(function (response) {
@@ -201,18 +201,18 @@ function webcam(name) {
           console.log(data);
           console.log(data.result.webcams[0].id);
 
-          fetch(
-            `https://api.windy.com/api/webcams/v2/list/webcam=${data.result.webcams[0].id}?key=${APIKey2}`
-          )
-            .then(function (response) {
-              return response.json();
-            })
-            .then(function (data) {
-              console.log(data);
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
+          // fetch(
+          //   `https://api.windy.com/api/webcams/v2/list/webcam=${data.result.webcams[0].id}?key=${APIKey2}`
+          // )
+          //   .then(function (response) {
+          //     return response.json();
+          //   })
+          //   .then(function (data) {
+          //     console.log(data);
+          //   })
+          //   .catch(function (error) {
+          //     console.log(error);
+          //   });
           var localWebcam = name(cityInput);
 
           video.textContent = localWebcam.text(localWebcam[0].value);
@@ -250,7 +250,6 @@ function convert(temp) {
 }
 
 //EVENTS
-
 //ADDS AN EVENT LISTENER TO THE SEARCH BUTTON AND STORES THE VALUE INTO LOCAL STORAGE
 searchBtn.addEventListener("click", function (event) {
   event.preventDefault();
