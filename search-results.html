@@ -20,7 +20,7 @@
     <title>Weather Application</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Weather + Webcam Application</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -73,7 +73,7 @@
                   
             </div>
 
-             <div class="card col-md-8 small">
+             <!-- <div class="card col-md-8 small">
               <video class="img-fluid" playsinline autoplay muted loop>
               <source src="https://mdbootstrap.com/img/video/animation-intro.mp4" type="video/mp4" id="live-webcam">
               </video>
@@ -83,18 +83,20 @@
               <a href="#" class="btn btn-primary">Click For More Webcam Footage</a>
               
               </div>
-          </div> 
-            <!-- <div class="card col-md-8 small">
+          </div>  -->
+            <div class="card col-md-8 small">
               
               <div class="card">
-                <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
+                <img src="" class="card-img-top" alt="..." id="webcam-image">
                 <div class="card-body">
-                  <h4 class="card-title">Barcelona, Spain</h4>
+                  <h4 class="card-title" id="webcam-city-name"></h4>
+                  <p class="card-text", id="webcam-location-name"></p>
                   <p class="card-text">Live Webcam Feed</p>
-                  <a href="#" class="btn btn-primary">Find more views</a>
+                  <!-- <a href="#" class="btn btn-primary">Find more views</a> -->
                 </div>
               </div>
-          </div> -->
+
+          </div>
             <div class="city card col-md-12">
               <div class="row">
                 <div class="col-12 border border-light m-3 bg-light rounded text-center">
